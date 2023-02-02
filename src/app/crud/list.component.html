@@ -1,0 +1,25 @@
+
+
+<div class="container">
+    <app-form *ngIf="isId" (selectedAddress)="addressChangeEventHandler($event)" [nameId]="nameId"></app-form>
+   
+    <div class="row" *ngIf="!isId">
+        <div class="col-md-12 mt-4">
+            <button class="btn btn-primary" (click)="addUser()">Add New User</button>
+        </div>
+        
+    <div class="col-md-4 mt-4" *ngFor=" let item of userList">
+        <div class="card" >
+            <img src="{{item.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title cursor" (click)="editName(item.id)">Name: {{item.firstName}}</h5>
+              <p class="card-text">Email : {{item.email}}</p>
+              <p>Address: {{item.address.city}}</p>
+              <p>Age: {{item.birthDate | age}}</p>
+            </div>
+          </div>
+  
+</div>
+
+</div>
+</div>
