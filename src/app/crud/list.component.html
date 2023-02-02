@@ -4,7 +4,7 @@
     <app-form *ngIf="isId" (selectedAddress)="addressChangeEventHandler($event)" [nameId]="nameId"></app-form>
    
     <div class="row" *ngIf="!isId">
-        <div class="col-md-12 mt-4">
+        <div class="col-md-12 add-button">
             <button class="btn btn-primary" (click)="addUser()">Add New User</button>
         </div>
         

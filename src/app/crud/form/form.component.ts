@@ -23,14 +23,13 @@ export class FormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log("hello ", this.nameId);
     if(this.nameId){
-      this.updateuser()
+      this.getSingleuser()
     }
   }
 
-  getSingleuser(id:any){
-    this.crudService.getSingleUser(id).subscribe((res : any) =>{
+  getSingleuser(){
+    this.crudService.getSingleUser(this.nameId).subscribe((res : any) =>{
 
       this.profileForm.patchValue(res);
     
@@ -45,15 +44,14 @@ export class FormComponent implements OnInit {
      
       // window.history.back();
     })
+    this.selectedAddress.emit(this.isParent);
   }
 
   addUser(): void{
     this.selectedAddress.emit(this.isParent);
     let data = this.profileForm.value
     this.crudService.postUser(data).subscribe((res)=>{
-     
-      
-      
+
     })
   }
 

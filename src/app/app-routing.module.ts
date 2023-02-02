@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormComponent } from './crud/form/form.component';
+import { ListComponent } from './crud/list.component';
+import { LoginComponent } from './login/login.component';
 
+import { AuthGuard } from './shared/auth.guard';
 const routes: Routes = [
- 
-    { path: 'form-component', component: FormComponent },
+  { path: '', redirectTo: '/log-in', pathMatch: 'full' },
+  { path: 'log-in', component: LoginComponent },
+    { path: 'user-list', component: ListComponent ,canActivate: [AuthGuard],},
    
   
 ];

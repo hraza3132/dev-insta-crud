@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
-import {CrudDevInsta} from './crud/crud-enum'
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +9,25 @@ import {CrudDevInsta} from './crud/crud-enum'
 export class CrudService {
 
   constructor(private httpClient: HttpClient) { }
- 
+  private baseUrl = environment.apiUrl;
 
   getPeople(){
-   
-    return this.httpClient.get("https://dummyjson.com/users")
+   let url = this.baseUrl + 'users'
+    return this.httpClient.get(url)
   }
 
   getSingleUser(id:number){
-    return this.httpClient.get(`https://dummyjson.com/users/${id}`)
+    let url = this.baseUrl + `users/${id}`
+    return this.httpClient.get(url)
   }
 
   postUser(data:any){
-    return this.httpClient.post('https://dummyjson.com/users/add',data)
+    let url = this.baseUrl + "users/add"
+    return this.httpClient.post(url,data)
   }
 
   updateUser(id:any, data:{}){
-    return this.httpClient.put(`https://dummyjson.com/users/${id}`,  data)
+    let url = this.baseUrl + `users/${id}`
+    return this.httpClient.put(url,  data)
   }
 }
